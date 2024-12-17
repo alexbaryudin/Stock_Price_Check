@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Stock Price API",
+    "description": "An API to fetch stock prices based on a given stock symbol.",
+    "version": "1.0.0",
+    "x-ibm-application-icon":"<svg version=\"1.0\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"48px\" height=\"48px\" viewBox=\"0 0 3.84 3.84\" enable-background=\"new 0 0 64 64\" xml:space=\"preserve\"><path x=\"29\" y=\"13\" width=\"2\" height=\"39\" d=\"M1.74 0.78H1.86V3.12H1.74V0.78z\"/><path x=\"33\" y=\"13\" width=\"2\" height=\"39\" d=\"M1.98 0.78H2.1V3.12H1.98V0.78z\"/><path fill=\"none\" stroke=\"#000000\" stroke-width=\"0.12\" stroke-miterlimit=\"10\" d=\"M2.459 1.38s0 -0.36 -0.54 -0.36 -0.48 0.42 -0.48 0.42 0 0.42 0.48 0.42c0.54 0 0.601 0.36 0.601 0.42 0 0.12 0.059 0.48 -0.601 0.48 -0.54 0 -0.539 -0.24 -0.539 -0.3\"/><path fill=\"none\" stroke=\"#000000\" stroke-width=\"0.12\" stroke-miterlimit=\"10\" d=\"M3.235 0.605c0.726 0.726 0.726 1.904 0 2.63 -0.726 0.726 -1.904 0.726 -2.63 0 -0.726 -0.726 -0.726 -1.904 0 -2.63 0.726 -0.726 1.904 -0.726 2.63 0z\"/></svg>"
+  },
+  "servers": [
+    {
+      "url": "https://application-wxo-1.1ojd3fmlv7hw.us-south.codeengine.appdomain.cloud",
+      "description": "Get Stock Price with iconr"
+    }
+  ],
+  "paths": {
+    "/get-stock-price": {
+      "post": {
+        "summary": "Get Stock Price",
+        "description": "Fetches the current stock price for a given stock symbol(with icon).",
+        "operationId": "getStockPrice_icon",
+        "x-ibm-application-icon":"<svg version=\"1.0\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"48px\" height=\"48px\" viewBox=\"0 0 3.84 3.84\" enable-background=\"new 0 0 64 64\" xml:space=\"preserve\"><path x=\"29\" y=\"13\" width=\"2\" height=\"39\" d=\"M1.74 0.78H1.86V3.12H1.74V0.78z\"/><path x=\"33\" y=\"13\" width=\"2\" height=\"39\" d=\"M1.98 0.78H2.1V3.12H1.98V0.78z\"/><path fill=\"none\" stroke=\"#000000\" stroke-width=\"0.12\" stroke-miterlimit=\"10\" d=\"M2.459 1.38s0 -0.36 -0.54 -0.36 -0.48 0.42 -0.48 0.42 0 0.42 0.48 0.42c0.54 0 0.601 0.36 0.601 0.42 0 0.12 0.059 0.48 -0.601 0.48 -0.54 0 -0.539 -0.24 -0.539 -0.3\"/><path fill=\"none\" stroke=\"#000000\" stroke-width=\"0.12\" stroke-miterlimit=\"10\" d=\"M3.235 0.605c0.726 0.726 0.726 1.904 0 2.63 -0.726 0.726 -1.904 0.726 -2.63 0 -0.726 -0.726 -0.726 -1.904 0 -2.63 0.726 -0.726 1.904 -0.726 2.63 0z\"/></svg>",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "The stock symbol to retrieve the price for.",
+                    "example": "IBM"
+                  }
+                },
+                "required": ["symbol"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with the stock price.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string",
+                      "description": "The current stock price.",
+                      "example": "$222.97"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
